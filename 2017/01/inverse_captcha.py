@@ -38,16 +38,29 @@ class InverseCaptcha():
         return next_i
 
     def sumDigits(self, l: [int], mode: int=0) -> int:
-
+        print("checking list is valid length (>1)...")
         if len(l) <= 1:
+            print("too short")
             return 0
+        print("...valid length.")
 
+        print("initialising running total at 0")
         running_total = 0
+
+        print("enumerating list...")
         for i, v in enumerate(l):
             next_i = self.next_digit(i=i, l=l, mode=mode)
+            print("i: {}, v: {}, next_i: {}, next_v: {}".format(i, v, next_i, l[next_i]))
             if v == l[next_i]:
+                print("v == next_v therefore adding v to running total")
                 running_total += v
 
         return running_total
 
+    def process(self, n: int, mode: int=0) -> int:
+        print("creating list...")
+        l = self.listify(n=n)
+        print("...done. List = {}".format(l))
 
+        print("summing digits...")
+        return self.sumDigits(l=l, mode=mode)
