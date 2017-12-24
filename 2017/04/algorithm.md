@@ -18,5 +18,18 @@ The system's full passphrase list is available as your puzzle input. How many pa
 Discussion
 ----------
 
+The permutations of a list where every element in the list has to occur once is simply n!
+The permutations of a list where some number (r) elements from the list have to occur once is n! / (n - r)!
+(See [this][link01] for details).
+
+Since we want all the permutations of every r from 1...n we need to compute n! plus each of the n!/(n-r)! for every r between 1 and n-1
+
+Implementation
+--------------
+
+See the sample Swift file in this folder.
+
+
+[link01]: https://www.mathsisfun.com/combinatorics/combinations-permutations.html "Maths Is Fun: Combinations and Permutations"
 
 
