@@ -18,6 +18,19 @@ The system's full passphrase list is available as your puzzle input. How many pa
 Discussion
 ----------
 
+### New Problem ###
+
+We need to check if every element in a row is unique.
+
+We can do this by putting every element in a row into a list and then comparing the length of the list to the length of a set of the list:
+
+```
+if len(row) == len(set(row)):
+   # all items are unique, therefore no duplicates
+```
+
+### Old Problem ###
+
 The permutations of a list where every element in the list has to occur once is simply n!
 The permutations of a list where some number (r) elements from the list have to occur once is n! / (n - r)!
 (See [this][link01] for details).
