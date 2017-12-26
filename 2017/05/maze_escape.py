@@ -45,7 +45,7 @@ class MazeEscape():
         move = None
         arr = maze[:]
         
-        while i <= len(arr):
+        while i < len(arr):
             count += 1
             move = arr[i]
             arr[i] += 1
@@ -54,6 +54,6 @@ class MazeEscape():
         return count
         
     def escape_maze(self) -> int:
-        filename = get_filename()
-        maze = process_file(filename: filename)
-        return steps_to_escape(maze: maze)
+        filename = self.get_filename()
+        maze = self.process_file(filename=filename)
+        return self.steps_to_escape(maze=maze)
