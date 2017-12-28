@@ -37,3 +37,28 @@ that has been seen before?
 '''
 
 class MemoryAllocation():
+
+    def index_max(self, arr: [int]) -> int:
+        return index(max(arr))
+    
+    def solver(arr: [int]) -> int:
+        '''Takes an array of ints, reallocates the elements as described at the top of the module. This process is repeated until a
+           reallocation produces a value that has been seen before, at which point the number of iterations (including the final one)
+           is returned.'''
+        
+        working_list = arr[:] # copy the input list into a working version
+        history = [working_list] # add the initial state to the history list
+        
+        while true:
+            i = index_max(arr: working_list)
+            num_to_allocate = working_list[i]
+            
+            while num_to_allocate > 0:
+                i = (i + 1) % len(working_list)
+                working_list(i) += 1
+                num_to_allocate -= 1
+                
+            if working_list in history:
+                return len(history) + 1
+            else:
+                history.append(working_list)
