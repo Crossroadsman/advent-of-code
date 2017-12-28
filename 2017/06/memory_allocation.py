@@ -53,8 +53,11 @@ class MemoryAllocation():
         
         print("starting outer loop for list: {}".format(working_list))
         while True:
+            print("finding max value in list")
             i = self.index_max(arr=working_list)
+            print("taking max value of out working list and putting in temp variable")
             num_to_allocate = working_list[i]
+            working_list[i] = 0
             
             print("going into inner loop")
             while num_to_allocate > 0:
