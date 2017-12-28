@@ -49,7 +49,7 @@ class MemoryAllocation():
            is returned.'''
         
         working_list = arr[:] # copy the input list into a working version
-        history = [working_list] # add the initial state to the history list
+        history = [working_list[:]] # add the initial state to the history list
         
         print("starting outer loop for list: {}".format(working_list))
         while True:
@@ -75,7 +75,7 @@ class MemoryAllocation():
                 
             if working_list in history:
                 print("working list ({}) was found in history ({})".format(working_list, history))
-                return len(history) + 1
+                return len(history)
             else:
                 print("working list ({}) does not appear in history, appending it".format(working_list))
-                history.append(working_list)
+                history.append(working_list[:])
