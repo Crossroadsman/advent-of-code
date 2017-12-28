@@ -39,7 +39,9 @@ that has been seen before?
 class MemoryAllocation():
 
     def index_max(self, arr: [int]) -> int:
-        return arr.index(max(arr))
+        i = arr.index(max(arr))
+        print("max value is {} at index {}".format(arr[i], i))
+        return i
     
     def solver(self, arr: [int]) -> int:
         '''Takes an array of ints, reallocates the elements as described at the top of the module. This process is repeated until a
@@ -49,10 +51,12 @@ class MemoryAllocation():
         working_list = arr[:] # copy the input list into a working version
         history = [working_list] # add the initial state to the history list
         
+        print("starting outer loop for list: {}".format(working_list))
         while True:
             i = self.index_max(arr=working_list)
             num_to_allocate = working_list[i]
             
+            print("going into inner loop")
             while num_to_allocate > 0:
                 i = (i + 1) % len(working_list)
                 working_list[i] += 1
