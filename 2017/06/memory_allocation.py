@@ -58,14 +58,24 @@ class MemoryAllocation():
             print("taking max value of out working list and putting in temp variable")
             num_to_allocate = working_list[i]
             working_list[i] = 0
+            print("max value was {} and list is now: {}".format(num_to_allocate, working_list))
             
             print("going into inner loop")
             while num_to_allocate > 0:
+                print("nums to allocate: {}".format(num_to_allocate))
+                print("shifting i right by one")
                 i = (i + 1) % len(working_list)
+                
+                print("incrementing the value at i")
                 working_list[i] += 1
+                print("reducing remaining nums to allocate")
                 num_to_allocate -= 1
                 
+                print("working list is now: {} with {} left to allocate".format(working_list, num_to_allocate))
+                
             if working_list in history:
+                print("working list ({}) was found in history ({})".format(working_list, history))
                 return len(history) + 1
             else:
+                print("working list ({}) does not appear in history, appending it".format(working_list))
                 history.append(working_list)
