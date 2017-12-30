@@ -5,10 +5,10 @@ class CleanData():
     def get_filename(self) -> str:
         return input("Enter filename > ")
 
-    def clean_data(self, filename: str) -> [{str : [str]}]:
+    def clean_data(self, filename: str) -> {str : [str]}:
         file_object = open(filename, 'r')
         
-        cleaned_data = []
+        cleaned_data = {}
         
         """
         (?P<element>\w+) : capture group `element` comprising one or more word characters
@@ -34,14 +34,13 @@ class CleanData():
             if has_children_match_object: # a match was found
                 element = has_children_match_object.groupdict()['element']
                 children = has_children_match_object.groupdict()['children'].split(', ')
-                cleaned_data.append( { element : children } )
+                cleaned_data[element] = children
             
             else: # no match for has_children_pattern
                 no_children_match_object = re.match(no_children_pattern, line)
                 if no_children_match_object: # a match was found
                     element = no_children_match_object.groupdict()['element']
-                    children = []
-                    cleaned_data.append( { element : children } )
+                    cleaned_data[element] = []
                     
                 else: # no match for no_children_pattern
                     print("Unable to match data. Was input file valid?")
