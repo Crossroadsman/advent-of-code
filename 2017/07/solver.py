@@ -32,4 +32,4 @@ class Solver():
         
         new_data = {k:v for (k, v) in data.items() if k not in children}
         
-        return solver(data=new_data)
+        return self.solver(data=new_data)
