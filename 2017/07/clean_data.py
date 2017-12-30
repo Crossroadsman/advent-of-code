@@ -5,7 +5,7 @@ class CleanData():
     def get_filename(self) -> str:
         return input("Enter filename > ")
 
-    def clean_data(self, filename: str) -> [{str : str}]
+    def clean_data(self, filename: str) -> [{str : str}]:
         file_object = open(filename, 'r')
         
         cleaned_data = []
