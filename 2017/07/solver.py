@@ -4,7 +4,8 @@ class Solver():
             return "No items in list"
 
         if len(data) == 1:
-            return data.keys()[0]
+            keys = data.keys()
+            return next(iter(keys))
         
         # empty structures are falsy and structures with any contents are truthy hence `if v` to check if v is not empty
         data_elements_with_children = {k:v for (k, v) in data.items() if v}
