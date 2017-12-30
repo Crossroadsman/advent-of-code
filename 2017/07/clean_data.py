@@ -31,7 +31,7 @@ class CleanData():
             
             # note that if we wanted to find the match somewhere in the string but not necessarily at the beginning, we would use re.search
             has_children_match_object = re.match(has_children_pattern, line)
-            if has_children_string: # a match was found
+            if has_children_match_object: # a match was found
                 element = has_children_match_object.groupdict()['element']
                 children = has_children_match_object.groupdict()['children'].split(', ')
                 cleaned_data.append( { element : children } )
