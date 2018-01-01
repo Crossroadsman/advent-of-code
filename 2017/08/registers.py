@@ -97,3 +97,5 @@ class CleanData():
             else: # line didn't match the regex -> malformed input?
                 print("line did not conform to expected format")
                 
+        file_object.close()
+        return cleaned_data
