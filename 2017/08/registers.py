@@ -41,6 +41,10 @@ class CleanData():
         return input("Enter the filename to open > ")
 
     def clean_data(self, filename: str) -> [{str:str}]:
+        print("Cleaning Data")
+        print("=============")
+        
+        print("Opening file")
         file_object = open(filename, 'r')
         
         cleaned_data = []
@@ -93,6 +97,7 @@ class CleanData():
                              'query_value': match_object.groupdict()['query_value'],
                              }
                 cleaned_data.append(line_data)
+                print("{} --> {}".format(line, line_data))
                 
             else: # line didn't match the regex -> malformed input?
                 print("line did not conform to expected format")
