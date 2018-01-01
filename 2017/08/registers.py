@@ -78,7 +78,7 @@ class CleanData():
                 Match a single character present in the list below [ \t]+
             Named Capture Group query_value (?P<query_value>[-\d]+)
         '''
-        pattern = (?P<register>\w+)[ \t]+(?P<instruction>\w+)[ \t]+(?P<quantum>[-\d]+)[ \t]+(if (?P<query_register>\w+)[ \t]+(?P<query_operator>[!=><]+)[ \t]+(?P<query_value>[-\d]+))?
+        pattern = r'(?P<register>\w+)[ \t]+(?P<instruction>\w+)[ \t]+(?P<quantum>[-\d]+)[ \t]+(if (?P<query_register>\w+)[ \t]+(?P<query_operator>[!=><]+)[ \t]+(?P<query_value>[-\d]+))?'
         
         for line in file_object:
 
@@ -99,3 +99,41 @@ class CleanData():
                 
         file_object.close()
         return cleaned_data
+
+class ProcessData():
+    
+    def compare(self, registers: {str:int}, register: str, operator: str, value: int) -> bool:
+        if operator == '!=':
+            return registers[register] != value
+        if operator == '==':
+            return registers[register] == value
+        if operator == '>':
+            return registers[register] > value
+        if operator == '>=':
+            return registers[register] >= value
+        if operator == '<':
+            return registers[register] < value
+        if operator == '<=':
+            return registers[register] <= value
+        else:
+            print("unknown operator {}".format(operator))
+            raise
+    
+    def process_data(self, data: [{str:str}]) -> int:
+        
+        registers = {}
+        for element in data:
+            
+            if self.compare(registers: registers, register: data['query_register'], operator: data['query_operator'], value: int(data['query_value'])):
+                register = data['register']
+                instruction = data['instruction']
+                quantum = int(data['quantum'))
+                                   
+                if instruction == 'inc':
+                    registers[register] += quantum
+                if instruction == 'dec':
+                    registers[register] -= quantum
+                else:
+                    print("unknown instruction {}".format(instruction))
+                                   
+        return max(registers.values())
