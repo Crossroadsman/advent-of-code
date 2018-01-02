@@ -142,6 +142,9 @@ class ProcessData():
             
             if self.compare(registers=registers, register=query_register, operator=element['query_operator'], value=int(element['query_value'])):
                 print('...true')
+                if registers.get(access_register) == None:
+                    registers[access_register] = 0 # initialise the access_register to zero first time it is written
+                
                 instruction = element['instruction']
                 quantum = int(element['quantum'])
                                    
