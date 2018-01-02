@@ -108,6 +108,7 @@ class CleanData():
 class ProcessData():
     
     def compare(self, registers: {str:int}, register: str, operator: str, value: int) -> bool:
+        print("{} {} {}...".format(registers[register], operator, value))
         if operator == '!=':
             return registers[register] != value
         if operator == '==':
@@ -138,13 +139,20 @@ class ProcessData():
                 registers[register] = 0 # initialise register to zero first time it is queried
             
             if self.compare(registers=registers, register=register, operator=element['query_operator'], value=int(element['query_value'])):
+                print('...true')
                 instruction = element['instruction']
                 quantum = int(element['quantum'])
                                    
                 if instruction == 'inc':
+                    print("{} was: {}".format(register, registers[register]))
+                    print("performing 'inc' in the amount of {}".format(quantum))
                     registers[register] += quantum
+                    print("now: {}".format(registers[register]))
                 elif instruction == 'dec':
+                    print("{} was: {}".format(register, registers[register]))
+                    print("performing 'dec' in the amount of {}".format(quantum))
                     registers[register] -= quantum
+                    print("now: {}".format(registers[register]))
                 else:
                     print("unknown instruction {}".format(instruction))
                                    
