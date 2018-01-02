@@ -1,0 +1,1 @@
+gug dec 188 if zpw >= 8
