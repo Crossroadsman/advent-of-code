@@ -129,10 +129,10 @@ class ProcessData():
         registers = {}
         for element in data:
             
-            if self.compare(registers: registers, register: data['query_register'], operator: data['query_operator'], value: int(data['query_value'])):
+            if self.compare(registers=registers, register=data['query_register'], operator=data['query_operator'], value=int(data['query_value'])):
                 register = data['register']
                 instruction = data['instruction']
-                quantum = int(data['quantum'))
+                quantum = int(data['quantum'])
                                    
                 if instruction == 'inc':
                     registers[register] += quantum
