@@ -108,6 +108,9 @@ class CleanData():
 class ProcessData():
     
     def compare(self, registers: {str:int}, register: str, operator: str, value: int) -> bool:
+        if registers.get(register) == None:
+            registers[register] = 0 # initialise register to zero first time it is queried
+            
         if operator == '!=':
             return registers[register] != value
         if operator == '==':
