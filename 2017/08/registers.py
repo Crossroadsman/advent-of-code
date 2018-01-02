@@ -129,30 +129,32 @@ class ProcessData():
         
         registers = {}
         for element in data:
+            print(element)
             '''
             `all registers are initially set to zero`
             We don't know until the data set is cleaned what all the registers are, therefore once we have a dataset we can write zero
             into each register the first time it is queried
             '''
-            register = element['query_register']
-            if registers.get(register) == None:
-                registers[register] = 0 # initialise register to zero first time it is queried
+            access_register = element['register']
+            query_register = element['query_register']
+            if registers.get(query_register) == None:
+                registers[query_register] = 0 # initialise the query_register to zero first time it is queried
             
-            if self.compare(registers=registers, register=register, operator=element['query_operator'], value=int(element['query_value'])):
+            if self.compare(registers=registers, register=query_register, operator=element['query_operator'], value=int(element['query_value'])):
                 print('...true')
                 instruction = element['instruction']
                 quantum = int(element['quantum'])
                                    
                 if instruction == 'inc':
-                    print("{} was: {}".format(register, registers['register']))
+                    print("{} was: {}".format(access_register, registers[access_register]))
                     print("performing 'inc' in the amount of {}".format(quantum))
-                    registers['register'] += quantum
-                    print("now: {}".format(registers['register']))
+                    registers[access_register] += quantum
+                    print("now: {}".format(registers[access_register]))
                 elif instruction == 'dec':
-                    print("{} was: {}".format(register, registers['register']))
-                    print("performing 'dec' in the amount of {}".format(quantum))
-                    registers['register'] -= quantum
-                    print("now: {}".format(registers['register']))
+                    print("{} was: {}".format(access_register, registers[access_register]))
+                    print("performing 'inc' in the amount of {}".format(quantum))
+                    registers[access_register] -= quantum
+                    print("now: {}".format(registers[access_register]))
                 else:
                     print("unknown instruction {}".format(instruction))
                                    
