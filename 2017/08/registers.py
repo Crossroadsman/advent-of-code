@@ -155,7 +155,7 @@ class ProcessData():
                     print("now: {}".format(registers[access_register]))
                 elif instruction == 'dec':
                     print("{} was: {}".format(access_register, registers[access_register]))
-                    print("performing 'inc' in the amount of {}".format(quantum))
+                    print("performing 'dec' in the amount of {}".format(quantum))
                     registers[access_register] -= quantum
                     print("now: {}".format(registers[access_register]))
                 else:
