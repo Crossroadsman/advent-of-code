@@ -143,7 +143,7 @@ class ProcessData():
                                    
                 if instruction == 'inc':
                     registers[register] += quantum
-                if instruction == 'dec':
+                elif instruction == 'dec':
                     registers[register] -= quantum
                 else:
                     print("unknown instruction {}".format(instruction))
