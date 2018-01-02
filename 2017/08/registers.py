@@ -144,15 +144,15 @@ class ProcessData():
                 quantum = int(element['quantum'])
                                    
                 if instruction == 'inc':
-                    print("{} was: {}".format(register, registers[register]))
+                    print("{} was: {}".format(register, registers['register']))
                     print("performing 'inc' in the amount of {}".format(quantum))
-                    registers[register] += quantum
-                    print("now: {}".format(registers[register]))
+                    registers['register'] += quantum
+                    print("now: {}".format(registers['register']))
                 elif instruction == 'dec':
-                    print("{} was: {}".format(register, registers[register]))
+                    print("{} was: {}".format(register, registers['register']))
                     print("performing 'dec' in the amount of {}".format(quantum))
-                    registers[register] -= quantum
-                    print("now: {}".format(registers[register]))
+                    registers['register'] -= quantum
+                    print("now: {}".format(registers['register']))
                 else:
                     print("unknown instruction {}".format(instruction))
                                    
