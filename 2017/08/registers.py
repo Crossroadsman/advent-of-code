@@ -108,9 +108,6 @@ class CleanData():
 class ProcessData():
     
     def compare(self, registers: {str:int}, register: str, operator: str, value: int) -> bool:
-        if registers.get(register) == None:
-            registers[register] = 0 # initialise register to zero first time it is queried
-            
         if operator == '!=':
             return registers[register] != value
         if operator == '==':
@@ -131,9 +128,16 @@ class ProcessData():
         
         registers = {}
         for element in data:
+            '''
+            `all registers are initially set to zero`
+            We don't know until the data set is cleaned what all the registers are, therefore once we have a dataset we can write zero
+            into each register the first time it is queried
+            '''
+            register = element['query_register']
+            if registers.get(register) == None:
+                registers[register] = 0 # initialise register to zero first time it is queried
             
-            if self.compare(registers=registers, register=element['query_register'], operator=element['query_operator'], value=int(element['query_value'])):
-                register = element['register']
+            if self.compare(registers=registers, register=register, operator=element['query_operator'], value=int(element['query_value'])):
                 instruction = element['instruction']
                 quantum = int(element['quantum'])
                                    
