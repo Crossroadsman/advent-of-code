@@ -1,0 +1,10 @@
+gug dec 188 if zpw >= 8
+pnt inc 428 if xek < 10
+qt inc 274 if d == -8
+wv dec 661 if gug > -1
+kw dec 518 if zpw > -8
+kw inc -894 if vk <= 6
+pnt dec 503 if vk == 8
+kw dec 644 if fs == 0
+vk inc 880 if pnt == 428
+sg inc 242 if kmh <= 9
