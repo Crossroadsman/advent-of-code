@@ -1,9 +1,18 @@
 def calibrate(filename: str) -> int:
     text_list = file_to_list(filename)
     int_list = strs_to_ints(text_list)
+ 
     frequency = 0
-    for n in int_list:
-        frequency += n
+    results = [frequency]
+ 
+    while True:
+        for n in int_list:
+            frequency += n
+            if frequency in results:
+                return frequency
+            else:
+                results.append(frequency)
+
     return frequency
 
 

@@ -11,10 +11,10 @@ class CalibrateTest(unittest.TestCase):
 
     def test_valid_input_returns_correct_output(self):
         valid_input_data = [
-            ('test_frequencies.txt', 3),
-            ('test_frequencies_2.txt', 3),
-            ('test_frequencies_3.txt', 0),
-            ('test_frequencies_4.txt', -6),
+            ('test_frequencies.txt', 0),
+            ('test_frequencies_2.txt', 10),
+            ('test_frequencies_3.txt', 5),
+            ('test_frequencies_4.txt', 14),
         ]
 
         for datum in valid_input_data:
@@ -29,7 +29,7 @@ class FileToListTest(unittest.TestCase):
 
     def test_valid_filename_produces_valid_list(self):
         valid_filename = 'test_frequencies.txt'
-        expected_list = ['1', '-2', '3', '1']
+        expected_list = ['1', '-1']
 
         result = file_to_list(valid_filename)
 
