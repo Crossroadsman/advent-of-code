@@ -48,7 +48,7 @@ def compute(program: [int], entry_point=0) -> int:
     halted = False
     instruction_pointer_address = entry_point
 
-    live_program = program
+    live_program = program.copy()
 
     while not halted:
         opcode = live_program[instruction_pointer_address]
